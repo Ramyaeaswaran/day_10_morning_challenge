@@ -1,3 +1,5 @@
+import 'dart:math';
+import 'test.dart';
 // Challenge 1
 // Write a function that returns the longest sequence of consecutive zeroes in a binary string.
 // Examples:
@@ -6,8 +8,21 @@
 // longestZero("100100100") ➞ "00"
 //
 // longestZero("11111") ➞ ""
-
-
+longestZero(String n) {
+  int count = 0;
+  int result =0;
+  String value;
+  for (int i = 0; i < n.length; i++) {
+    if (n[i] == '0') {
+      count++;
+      result = max(result,count);
+    }else{
+      count = 0;
+    }
+  }
+  value ='0'*result;
+  return value;
+}
 // Challenge 2
 // Create a function that performs an even-odd transform to an array, n times. Each even-odd transformation:
 //
@@ -20,9 +35,24 @@
 // evenOddTransform([0, 0, 0], 10) ➞ [-20, -20, -20]
 //
 // evenOddTransform([1, 2, 3], 1) ➞ [3, 0, 5]
+evenOddTransform(List arr,int n){
+ // List newlist;
+  for(int i=0;i<arr.length;i++){
+    if(arr[i] % 2 == 0){
+      arr[i] =arr[i]-2*n;
+    }else{
+      arr[i]=arr[i]+2*n;
+    }
+  }
+  return arr;
+}
+
+
+
 
 main() {
-
+  print(longestZero("01100001011000"));
+  print(evenOddTransform([1, 2, 3], 1));
 }
 
 // Challenge 3
